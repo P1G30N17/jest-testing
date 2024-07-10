@@ -51,6 +51,20 @@ function showTurns() {
             clearInterval(turns);
         }
     }, 800);
-}
+};
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+function playerTurn () {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length == game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        };
+    } else {
+        alert("Wrong move!");
+        newGame();
+    }
+};
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };
